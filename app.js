@@ -34,19 +34,37 @@ function resetStats() {
 }
 
 form.addEventListener('submit', (e) => {
+    e.preventDefault();
     // Step 1 - add code to track each submission to the stats
+    const info = new FormData(form);
+    const playerScore = {
+        player: info.get('player'),
+        points: Number(info.get('points')),
+    };
     // Create an object to "model" you statistic like the following:
     // { player: 'Bob', points: 2 }
+    stats.push(playerScore);
+    renderStats();
+    form.reset();
     // Hint -- create the object from the form, push it onto the stats array, then call renderStats
 });
 
 remove.addEventListener('click', () => {
+    stats.pop();
+    renderStats();
     // Step 2 -- add code to allow users to remove the most recent stat
     // Hint -- how do you remove an element from an array?
     // Hint -- how can we rerender the stats using a function above?
 });
 
 save.addEventListener('click', () => {
+    let totalPoints = 0;
+    for (const stat of stats) {
+        totalPoints += stat.points;
+    }
+    games.push({ number: games.length + 1, totalPoints });
+    renderGames();
+    resetStats();
     // Step 3 - add code to allow users to save the state
     // Loop through the list of stats and add up the total points scored
     // Create a new object with the game number and the total points
