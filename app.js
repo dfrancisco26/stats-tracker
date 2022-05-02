@@ -62,7 +62,7 @@ save.addEventListener('click', () => {
     for (const stat of stats) {
         totalPoints += stat.points;
     }
-    games.push({ number: games.length + 1, totalPoints});
+    games.push({ number: games.length + 1, totalPoints });
     renderGames();
     resetStats();
     // Step 3 - add code to allow users to save the state
