@@ -35,7 +35,6 @@ function resetStats() {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-
     // Step 1 - add code to track each submission to the stats
     const info = new FormData(form);
     const playerScore = {
@@ -51,6 +50,8 @@ form.addEventListener('submit', (e) => {
 });
 
 remove.addEventListener('click', () => {
+    stats.pop ();
+    renderStats();
     // Step 2 -- add code to allow users to remove the most recent stat
     // Hint -- how do you remove an element from an array?
     // Hint -- how can we rerender the stats using a function above?
